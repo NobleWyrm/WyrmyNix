@@ -14,6 +14,9 @@
     hypridle
     hyprpaper
 
+    waybar
+    swww
+
     wezterm
     kitty
     cool-retro-term
