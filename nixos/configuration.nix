@@ -53,14 +53,15 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
   # Enable Hyprland
   programs.hyprland.enable = true;
 
   stylix.enable = true;
-  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml"; #gruvbox-dark-medium.yaml";
-  stylix.image = ./outer-wilds-4k.png;
+  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml"; #gruvbox-dark-medium.yaml";
+  stylix.polarity = "dark";
+  stylix.image = ./wallpaper.png;
 
 
   # Configure keymap in X11
