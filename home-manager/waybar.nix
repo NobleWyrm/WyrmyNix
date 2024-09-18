@@ -15,7 +15,7 @@
       ];
 
       modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/mode"];
-      modules-right = ["wireplumber" "network" "clock" "battery"];
+      modules-right = ["privacy" "wireplumber" "network" "tray" "clock" "battery"];
 
       "custom/logo" = {
         format = "";
@@ -23,32 +23,10 @@
         on-click = ''bemenu-run --accept-single  -n -p "Launch" --hp 4 --hf "#ffffff" --sf "#ffffff" --tf "#ffffff" '';
       };
 
-      #    "sway/workspaces" = {
-      #      disable-scroll = true;
-      #      all-outputs = true;
-      #      persistent_workspaces = {
-      #        "1" = [];
-      #        "2" = [];
-      #	"3" = [];
-      #	"4" = [];
-      #      };
-      #      disable-click = true;
-      #    };
-      #
-      #    "sway/mode" = {
-      #      tooltip = false;
-      #    };
-      #
-      #    "sway/language" = {
-      #      format = "{shortDescription}";
-      #      tooltip = false;
-      #      on-click = ''swaymsg input "1:1:AT_Translated_Set_2_keyboard" xkb_switch_layout next'';
-      #
-      #    };
-
       "clock" = {
         interval = 60;
         format = "{:%a %m/%d %I:%M}";
+        #tooltip-format = "{:%A, %B %d, %Y (%R)}  ";
       };
 
       "battery" = {
@@ -66,6 +44,34 @@
         tooltip-format-ethernet = "{ifname}  ";
         tooltip-format-disconnected = "Disconnected";
         max-length = 50;
+      };
+
+      "tray" = {
+        icon-size = 16;
+        spacing = 10;
+      };
+
+      "privacy" = {
+        icon-spacing = 4;
+        icon-size = 18;
+        transition-duration = 250;
+        modules = [
+          {
+            type = "screenshare";
+            tooltip = true;
+            tooltip-icon-size = 24;
+          }
+          #          {
+          #            type = "audio-out";
+          #            tooltip = true;
+          #            tooltip-icon-size = 24;
+          #          }
+          {
+            type = "audio-in";
+            tooltip = true;
+            tooltip-icon-size = 24;
+          }
+        ];
       };
     };
   };
@@ -89,7 +95,7 @@
       font-size: 18px;
       margin: 0;
       margin-left: 7px;
-      margin-right: 12px;
+      margin-right: 16px;
       padding: 0;
       font-family: NotoSans Nerd Font Mono;
     }
