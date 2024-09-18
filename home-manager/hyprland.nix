@@ -18,7 +18,7 @@
       ];
 
       monitor = [
-        ",highres,auto,1"
+        #",highres,auto,1.25"
       ];
 
       input = {
