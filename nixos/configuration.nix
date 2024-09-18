@@ -160,6 +160,9 @@
     btop
     killall
 
+    # NixOS Specific Tools
+    alejandra
+
     kitty
     yakuake
 
