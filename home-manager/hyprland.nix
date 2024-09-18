@@ -17,6 +17,10 @@
         "steam -silent"
       ];
 
+      monitor = [
+        ",highres,auto,1"
+      ];
+
       input = {
         kb_layout = "us";
         repeat_rate = 50;
