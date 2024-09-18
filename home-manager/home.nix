@@ -1,12 +1,14 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "bwyrm";
   home.homeDirectory = "/home/bwyrm";
 
-  imports = [ 
+  imports = [
     ./hyprland.nix
     ./dunst.nix
     ./waybar.nix

@@ -9,13 +9,17 @@
     stylix.url = "github:danth/stylix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }: {
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    ...
+  }: {
     nixosConfigurations = {
       WyrmNix = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./nixos/configuration.nix
-	  # Loads the Stylix modules for both NixOS and home-manager
+          # Loads the Stylix modules for both NixOS and home-manager
           inputs.stylix.nixosModules.stylix
 
           home-manager.nixosModules.home-manager

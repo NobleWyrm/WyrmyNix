@@ -1,16 +1,19 @@
-{ config, pkgs, lib, ... }:
-
-let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   inherit (lib) mkForce;
 
-  inherit (config.lib.stylix.colors.withHashtag)
+  inherit
+    (config.lib.stylix.colors.withHashtag)
     base02
     base03
     base08
     base0A
     ;
-in
-{
+in {
   services.dunst = {
     enable = true;
 

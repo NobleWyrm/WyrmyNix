@@ -1,18 +1,21 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, lib, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./bootloader.nix
-      ./displaymanager.nix
-    ];
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./bootloader.nix
+    ./displaymanager.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
   #boot.loader.systemd-boot.enable = true;
@@ -69,7 +72,6 @@
   stylix.polarity = "dark";
   stylix.image = ./wallpaper.png;
 
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -99,7 +101,6 @@
     })
   '';
 
-
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
   services.pipewire = {
@@ -122,10 +123,10 @@
   users.users.bwyrm = {
     isNormalUser = true;
     description = "Brian Wyrm";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
@@ -150,30 +151,29 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-     wget
-     neovim
-     tmux
-     jdk
-     git
-     btop
-     killall
+    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    wget
+    neovim
+    tmux
+    jdk
+    git
+    btop
+    killall
 
-     kitty
-     yakuake
+    kitty
+    yakuake
 
-     brightnessctl
-     # This is the section for hyprland, eventually gonna put this in its own config file
-     pkgs.waybar
-     pkgs.dunst
-     libnotify
-     swww
-     rofi-wayland
-
+    brightnessctl
+    # This is the section for hyprland, eventually gonna put this in its own config file
+    pkgs.waybar
+    pkgs.dunst
+    libnotify
+    swww
+    rofi-wayland
   ];
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -201,5 +201,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
 }
