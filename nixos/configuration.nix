@@ -8,15 +8,17 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./bootloader.nix
+      ./displaymanager.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices."luks-c3413beb-aea3-4010-b9f4-61f9abd8ff1e".device = "/dev/disk/by-uuid/c3413beb-aea3-4010-b9f4-61f9abd8ff1e";
+  #boot.initrd.luks.devices."luks-c3413beb-aea3-4010-b9f4-61f9abd8ff1e".device = "/dev/disk/by-uuid/c3413beb-aea3-4010-b9f4-61f9abd8ff1e";
 
   networking.hostName = "WyrmNix"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -46,20 +48,24 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  fonts.packages = with pkgs; [
+    font-awesome
+    nerdfonts
+  ];
+
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   # services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+  # sddm as a display manager, for now.
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
 
   # Enable Hyprland
   programs.hyprland.enable = true;
 
   stylix.enable = true;
-  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml"; #gruvbox-dark-medium.yaml";
+  stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
   stylix.polarity = "dark";
   stylix.image = ./wallpaper.png;
 
@@ -73,9 +79,29 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Security / Polkit
+  security.rtkit.enable = true;
+  security.polkit.enable = true;
+  security.polkit.extraConfig = ''
+    polkit.addRule(function(action, subject) {
+      if (
+        subject.isInGroup("users")
+          && (
+            action.id == "org.freedesktop.login1.reboot" ||
+            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+            action.id == "org.freedesktop.login1.power-off" ||
+            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+          )
+        )
+      {
+        return polkit.Result.YES;
+      }
+    })
+  '';
+
+
   # Enable sound with pipewire.
   hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;

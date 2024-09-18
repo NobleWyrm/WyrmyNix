@@ -7,6 +7,55 @@
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$menu" = "rofi -show drun -show-icons";
+      
+      exec-once = [
+        "sleep 5; swww-daemon"
+	"waybar"
+	"steam -silent"
+      ];
+
+      input = {
+        kb_layout = "us";
+        repeat_rate = 50;
+        repeat_delay = 300;
+
+        accel_profile = "flat";
+        follow_mouse = 1;
+        sensitivity = 0.5;
+        mouse_refocus = false;
+
+        touchpad = {
+          natural_scroll = true;
+	  scroll_factor = 0.2;
+          disable_while_typing = false;
+        };
+      };
+
+      general = {
+        gaps_in = 10;
+        gaps_out = 10;
+        border_size = 2;
+        layout = "master";
+      };
+
+      decoration = {
+        rounding = 10;
+        drop_shadow = true;
+        shadow_range = 30;
+        shadow_render_power = 3;
+
+        blur = {
+          enabled = true;
+          size = 4;
+          passes = 2;
+        };
+      };
+
+      misc = {
+        disable_splash_rendering = true;
+        disable_hyprland_logo = true;
+      };
+
       bind =
         [
           "$mod, T, exec, $terminal"
