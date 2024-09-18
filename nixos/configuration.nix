@@ -81,6 +81,9 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Enable TLP for power management
+  services.tlp.enable = true;
+
   # Security / Polkit
   security.rtkit.enable = true;
   security.polkit.enable = true;
