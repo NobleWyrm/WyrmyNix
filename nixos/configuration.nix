@@ -156,6 +156,8 @@
      tmux
      jdk
      git
+     btop
+     killall
 
      kitty
      yakuake
