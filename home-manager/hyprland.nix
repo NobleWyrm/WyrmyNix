@@ -20,6 +20,7 @@
       monitor = [
         #",highres,auto,1.25"
       ];
+      #force_zero_scaling = true;
 
       input = {
         kb_layout = "us";

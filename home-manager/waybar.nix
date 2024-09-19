@@ -25,12 +25,28 @@
 
       "clock" = {
         interval = 60;
-        format = "{:%a %m/%d %I:%M}";
+        format = "{:%a %m/%d | %I:%M}";
+        tooltip = false;
         #tooltip-format = "{:%A, %B %d, %Y (%R)}  ";
       };
 
+      "wireplumber" = {
+        format = "{volume}%";
+        format-muted = "";
+        #on-click = "helvum";
+        max-volume = 100;
+        scroll-step = 0.2;
+      };
+
       "battery" = {
-        tooltip = false;
+        interval = 60;
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{capacity}% {icon}";
+        format-icons = ["" "" "" "" ""];
+        max-length = 25;
       };
 
       "network" = {
@@ -100,7 +116,7 @@
 
     #battery {
       margin-left: 7px;
-      margin-right: 3px;
+      margin-right: 15px;
     }
   '';
 }

@@ -12,6 +12,7 @@
     ./hyprland.nix
     ./dunst.nix
     ./waybar.nix
+    ./kitty.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -78,8 +79,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-
-  programs.kitty.enable = true;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
