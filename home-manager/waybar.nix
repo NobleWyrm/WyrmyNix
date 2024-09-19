@@ -72,7 +72,7 @@
   };
 
   programs.waybar.style = ''
-  
+
     * {
       border: none;
       border-radius: 0;
@@ -80,7 +80,7 @@
       margin: 0;
       font-size: 11px;
     }
-  
+
     #custom-logo {
       font-size: 18px;
       margin: 0;
@@ -89,15 +89,15 @@
       padding: 0;
       font-family: NotoSans Nerd Font Mono;
     }
-  
+
     #workspaces button {
       margin-right: 10px;
     }
-  
+
     #language {
       margin-right: 7px;
     }
-  
+
     #battery {
       margin-left: 7px;
       margin-right: 3px;

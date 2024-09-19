@@ -22,8 +22,8 @@
           ./nixos/configuration.nix
           # Loads the Stylix modules for both NixOS and home-manager
           inputs.stylix.nixosModules.stylix
-	  # Load up the Framework 16 specific configuration from nixos-hardware
-	  inputs.nixos-hardware.nixosModules.framework-16-7040-amd
+          # Load up the Framework 16 specific configuration from nixos-hardware
+          inputs.nixos-hardware.nixosModules.framework-16-7040-amd
 
           home-manager.nixosModules.home-manager
           {
