@@ -7,6 +7,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     stylix.url = "github:danth/stylix";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
   outputs = inputs @ {
@@ -21,6 +22,8 @@
           ./nixos/configuration.nix
           # Loads the Stylix modules for both NixOS and home-manager
           inputs.stylix.nixosModules.stylix
+	  # Load up the Framework 16 specific configuration from nixos-hardware
+	  inputs.nixos-hardware.nixosModules.framework-16-7040-amd
 
           home-manager.nixosModules.home-manager
           {
