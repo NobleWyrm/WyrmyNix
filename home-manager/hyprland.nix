@@ -72,7 +72,7 @@
           "$mod, T, exec, $terminal"
           "$mod, Return, exec, $menu"
 
-	  # Printscreen, flameshot even though it's slower?
+          # Printscreen, flameshot even though it's slower?
           #", Print, exec, flameshot full -c"
           ", Print, exec, grimblast copy screen"
 
@@ -96,7 +96,7 @@
           "$mod, l, movefocus, r"
           "$mod, k, movefocus, u"
           "$mod, j, movefocus, d"
-	  # Reorder windows
+          # Reorder windows
           "$mod SHIFT, left, movewindow, l"
           "$mod SHIFT, right, movewindow, r"
           "$mod SHIFT, up, movewindow, u"
