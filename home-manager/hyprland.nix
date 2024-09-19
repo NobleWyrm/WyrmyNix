@@ -12,15 +12,18 @@
       "$menu" = "rofi -show drun -show-icons";
 
       exec-once = [
-        "sleep 5; swww-daemon"
-        "waybar"
-        "steam -silent"
+        "sleep 0.5; swww-daemon"
+        "sleep 0.5; waybar"
+        "sleep 1; steam -silent"
       ];
 
       monitor = [
         #",highres,auto,1.25"
       ];
-      #force_zero_scaling = true;
+
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
       input = {
         kb_layout = "us";
