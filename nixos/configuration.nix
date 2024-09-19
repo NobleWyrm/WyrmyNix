@@ -192,11 +192,13 @@
     brightnessctl
     # This is the section for hyprland, eventually gonna put this in its own config file
     hyprlock
-    pkgs.waybar
-    pkgs.dunst
+    waybar
+    dunst
     libnotify
     swww
     rofi-wayland
+    grimblast
+    #(flameshot.override { enableWlrSupport = true; })
   ];
 
   xdg.portal.enable = true;

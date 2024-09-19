@@ -69,6 +69,10 @@
           "$mod, T, exec, $terminal"
           "$mod, Return, exec, $menu"
 
+	  # Printscreen, flameshot even though it's slower?
+          #", Print, exec, flameshot full -c"
+          ", Print, exec, grimblast copy screen"
+
           # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
           "$mod, Escape, killactive,"
           "$mod, M, exit,"
