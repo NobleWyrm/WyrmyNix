@@ -12,7 +12,7 @@
       "$menu" = "rofi -show drun -show-icons";
 
       exec-once = [
-        "sleep 0.5; swww-daemon"
+        "sleep 0.1; swww-daemon"
         "sleep 0.5; waybar"
         "sleep 1; steam -silent"
       ];
@@ -43,14 +43,14 @@
       };
 
       general = {
-        gaps_in = 10;
+        gaps_in = 5;
         gaps_out = 10;
-        border_size = 2;
+        border_size = 1;
         layout = "master";
       };
 
       decoration = {
-        rounding = 10;
+        rounding = 5;
         drop_shadow = true;
         shadow_range = 30;
         shadow_render_power = 3;
@@ -96,6 +96,15 @@
           "$mod, l, movefocus, r"
           "$mod, k, movefocus, u"
           "$mod, j, movefocus, d"
+	  # Reorder windows
+          "$mod SHIFT, left, movewindow, l"
+          "$mod SHIFT, right, movewindow, r"
+          "$mod SHIFT, up, movewindow, u"
+          "$mod SHIFT, down, movewindow, d"
+          "$mod SHIFT, h, movewindow, l"
+          "$mod SHIFT, l, movewindow, r"
+          "$mod SHIFT, k, movewindow, u"
+          "$mod SHIFT, j, movewindow, d"
 
           # Laptop multimedia keys for volume and LCD brightness
           ",XF86AudioRaiseVolume, exec, wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"
