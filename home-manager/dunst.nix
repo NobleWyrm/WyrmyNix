@@ -24,7 +24,7 @@ in {
 
     settings = {
       global = {
-        width = 250;
+        width = 350;
         separator_height = 1;
         padding = 24;
         horizontal_padding = 24;
@@ -37,7 +37,7 @@ in {
         format = "<b>%s</b>: %b";
         markup = "full";
         min_icon_size = 8;
-        max_icon_size = 32;
+        max_icon_size = 64;
         highlight = mkForce base03;
       };
 
