@@ -86,7 +86,7 @@
           "$mod, E, exec, $fileManager"
           "$mod, V, togglefloating,"
           "$mod, R, exec, $menu"
-	  "$mod, F, fullscreen"
+          "$mod, F, fullscreen"
           "$mod, P, pseudo, # dwindle"
           "$mod, J, togglesplit, # dwindle"
 
