@@ -4,6 +4,7 @@
   lib,
   ...
 }: {
+  programs.hyprlock.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
@@ -66,7 +67,10 @@
         disable_splash_rendering = true;
         disable_hyprland_logo = true;
       };
-
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
       bind =
         [
           "$mod, T, exec, $terminal"
@@ -82,6 +86,7 @@
           "$mod, E, exec, $fileManager"
           "$mod, V, togglefloating,"
           "$mod, R, exec, $menu"
+	  "$mod, F, fullscreen"
           "$mod, P, pseudo, # dwindle"
           "$mod, J, togglesplit, # dwindle"
 
