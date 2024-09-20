@@ -14,8 +14,8 @@
 
       exec-once = [
         "sleep 0.1; swww-daemon"
-        "sleep 0.5; waybar"
-        "sleep 1; steam -silent"
+        "sleep 0.75; waybar"
+        "sleep 2; steam -silent"
       ];
 
       monitor = [
@@ -35,6 +35,9 @@
         follow_mouse = 1;
         sensitivity = 0.5;
         mouse_refocus = false;
+
+        # Should fix the issue I'm seeing with the detached numpad of the Framework 16 getting out of sync
+	numlock_by_default = true;
 
         touchpad = {
           natural_scroll = true;
@@ -69,7 +72,7 @@
       };
       bindm = [
         "$mod, mouse:272, movewindow"
-        "$mod, mouse:273, resizewindow"
+        "$mod SHIFT, mouse:272, resizewindow"
       ];
       bind =
         [
