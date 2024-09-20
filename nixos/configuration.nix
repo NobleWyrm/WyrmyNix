@@ -13,6 +13,8 @@
     ./hardware-configuration.nix
     ./bootloader.nix
     ./displaymanager.nix
+    # Required for hashcat and other GPU compute functionality on AMD hardware
+    ./rocm.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -55,14 +57,6 @@
     font-awesome
     nerdfonts
   ];
-
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  # services.xserver.enable = true;
-
-  # sddm as a display manager, for now.
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
 
   # Enable Hyprland
   programs.hyprland.enable = true;
