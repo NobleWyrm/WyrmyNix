@@ -81,27 +81,10 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable TLP for power management
-  #  services.tlp = {
-  #      enable = true;
-  #      settings = {
-  #        CPU_SCALING_GOVERNOR_ON_AC = "performance";
-  #        CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-  #
-  #        CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-  #        CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
-  #
-  #        CPU_MIN_PERF_ON_AC = 0;
-  #        CPU_MAX_PERF_ON_AC = 100;
-  #        CPU_MIN_PERF_ON_BAT = 0;
-  #        CPU_MAX_PERF_ON_BAT = 50;
-  #
-  #       #Optional helps save long term battery health
-  #       #START_CHARGE_THRESH_BAT0 = 40; # 40 and bellow it starts to charge
-  #       #STOP_CHARGE_THRESH_BAT0 = 80; # 80 and above it stops charging
-  #
-  #      };
-  #  };
+  # Bad funky hack to make /etc/hosts writable, so that I can edit it (still as root) for Hack the Box and such.
+  # I bet there's a way to spin up temporary shell environments with additonal hosts added in an overlay or something
+  # Not gonna waste time on that now, gotta practice the hackin'
+  environment.etc.hosts.mode = "0644";
 
   # Security / Polkit
   security.rtkit.enable = true;
@@ -183,9 +166,13 @@
     powertop
     neofetch
 
+    openvpn
+    freerdp
+
     # NixOS Specific Tools
     alejandra
 
+    # Terminals
     kitty
     yakuake
 
