@@ -15,6 +15,8 @@
     ./displaymanager.nix
     # Required for hashcat and other GPU compute functionality on AMD hardware
     ./rocm.nix
+
+    ./neo4j.nix
   ];
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

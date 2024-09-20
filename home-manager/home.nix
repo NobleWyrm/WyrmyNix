@@ -13,7 +13,7 @@
     ./dunst.nix
     ./waybar.nix
     ./kitty.nix
-    ./pentesting.nix
+    ./pentesting/main.nix
   ];
 
   # This value determines the Home Manager release that your configuration is
