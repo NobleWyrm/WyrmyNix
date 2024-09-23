@@ -34,6 +34,7 @@
         format = "{volume}%";
         format-muted = "";
         #on-click = "helvum";
+	on-click = "pwvucontrol";
         max-volume = 100;
         scroll-step = 0.2;
       };
