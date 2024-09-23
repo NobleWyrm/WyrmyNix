@@ -161,6 +161,7 @@
     killall
     powertop
     neofetch
+    python3
 
     openvpn
     freerdp
