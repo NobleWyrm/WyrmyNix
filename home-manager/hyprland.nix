@@ -11,6 +11,7 @@
       "$mod" = "SUPER";
       "$terminal" = "kitty";
       "$menu" = "rofi -show drun -show-icons";
+      "$raw_run" = "rofi -show run";
 
       exec-once = [
         "sleep 0.1; swww-daemon"
@@ -78,6 +79,7 @@
         [
           "$mod, T, exec, $terminal"
           "$mod, Return, exec, $menu"
+          "$mod SHIFT, Return, exec, $raw_run"
 
           # Printscreen, flameshot even though it's slower?
           #", Print, exec, flameshot full -c"
