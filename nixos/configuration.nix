@@ -135,7 +135,7 @@
     description = "Brian Wyrm";
     extraGroups = ["networkmanager" "wheel"];
     packages = with pkgs; [
-      kdePackages.kate
+      #kdePackages.kate
       #  thunderbird
     ];
   };
@@ -164,7 +164,11 @@
     wget
     unzip
     p7zip
+    file
+
+    vim
     neovim
+
     tmux
     jdk
     git
