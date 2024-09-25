@@ -19,6 +19,15 @@
     ./neo4j.nix
   ];
 
+  nixpkgs.overlays = [
+    (
+      self: super:
+      {
+        kerbrute-go = super.callPackage ../packages/kerbrute-go {}; # path containing default.nix
+      }
+    )
+  ];
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Bootloader.
@@ -153,6 +162,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget
+    unzip
+    p7zip
     neovim
     tmux
     jdk
