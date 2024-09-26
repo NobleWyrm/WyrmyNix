@@ -38,6 +38,7 @@
         mouse_refocus = false;
 
         # Should fix the issue I'm seeing with the detached numpad of the Framework 16 getting out of sync
+	kb_options = numpad:mac;
 	numlock_by_default = true;
 
         touchpad = {
