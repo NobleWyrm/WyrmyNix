@@ -48,6 +48,7 @@
     obsidian
     # Pipewire version of pavucontrol, handy to have.
     pwvucontrol
+    teamspeak_client
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
