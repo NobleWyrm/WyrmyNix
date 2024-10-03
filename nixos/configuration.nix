@@ -47,6 +47,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  services.gnome.gnome-keyring.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -79,13 +81,17 @@
   stylix.image = ./wallpaper.png;
 
   # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
+  #services.xserver.xkb = {
+  #  layout = "us";
+  #  variant = "";
+  #};
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+
+  services.devmon.enable = true;
+  services.gvfs.enable = true; 
+  services.udisks2.enable = true;
 
   # Bad funky hack to make /etc/hosts writable, so that I can edit it (still as root) for Hack the Box and such.
   # I bet there's a way to spin up temporary shell environments with additonal hosts added in an overlay or something

@@ -23,4 +23,12 @@
       mouse_hide_wait = 60;
     };
   };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+
+
+    };
+  };
 }

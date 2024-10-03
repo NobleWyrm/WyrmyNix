@@ -13,8 +13,9 @@
     ./hyprland.nix
     ./dunst.nix
     ./waybar.nix
-    ./kitty.nix
+    ./terminal.nix
     ./pentesting/main.nix
+    ./vscode.nix
   ];
 
   # This value determines the Home Manager release that your configuration is

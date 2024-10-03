@@ -85,6 +85,7 @@
           # Printscreen, flameshot even though it's slower?
           #", Print, exec, flameshot full -c"
           ", Print, exec, grimblast copy screen"
+          "$mod SHIFT, s, exec, grimblast copy area"
 
           # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
           "$mod, Escape, killactive,"
