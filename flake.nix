@@ -46,6 +46,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+	    home-manager.backupFileExtension = "hm-bak";
             home-manager.users.bwyrm = import ./home-manager/home.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass
