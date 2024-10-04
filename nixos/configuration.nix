@@ -141,6 +141,7 @@
     isNormalUser = true;
     description = "Brian Wyrm";
     extraGroups = ["networkmanager" "wheel"];
+    shell = pkgs.zsh;
     packages = with pkgs; [
       #kdePackages.kate
       #  thunderbird
@@ -151,6 +152,7 @@
     vim = "nvim";
   };
   environment.variables.EDITOR = "nvim";
+  programs.zsh.enable = true;
 
   # Install firefox.
   programs.firefox.enable = true;

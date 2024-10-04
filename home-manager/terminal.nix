@@ -20,15 +20,43 @@
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;
-      mouse_hide_wait = 60;
+      mouse_hide_wait = 5;
     };
+  };
+
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+  
+    shellAliases = {
+      ll = "ls -l";
+      kali = "ssh kali";
+      #update = "sudo nixos-rebuild switch";
+    };
+    history = {
+      size = 10000;
+      path = "${config.xdg.dataHome}/zsh/history";
+    };
+  
   };
 
   programs.starship = {
     enable = true;
     settings = {
 
-
     };
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      style = "compact";
+    };
+    flags = [
+      '--disable-up-arrow'
+    ];
   };
 }
