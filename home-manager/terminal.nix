@@ -58,21 +58,49 @@
     enable = true;
     settings = with config.lib.stylix.colors.withHashtag; {
       add_newline = false;
-      username = {
-        show_always = true;
-        format = lib.concatStrings [
-#	  "[░▒▓](fg:${base03} bg:${base00})"
-	  "[ $user]($style)"
-	  "[ ](fg:${base03} bg:${base00})"
-	];
-        style_user = "fg:${base07} bg:${base03}";
+
+      format = lib.concatStrings [
+        "[](${base03})"
+	"[ ](fg:${base08} bg:${base03})"
+	"[ ](fg:${base03} bg:${base02})"
+        "$directory"
+	"[ ](fg:${base02} bg:${base00})"
+        "$git_branch"
+        "$git_status"
+        "$rust"
+	"$fill"
+	"[](fg:${base03} bg:${base00})"
+        "$time"
+	"[](fg:${base03} bg:${base00})"
+        "\n"
+        "$character"
+      ];
+
+      directory = {
+	format = "[$path]($style)";
+        style = "fg:${base07} bg:${base02}";
+        truncation_length = 5;
+        truncation_symbol = "…/";
       };
+
+      time = {
+        disabled = false;
+	format = "[$time]($style)";
+	time_format = "%R";
+        style = "fg:${base07} bg:${base03}";
+      };
+
+      rust = {
+        symbol = "󱘗";
+        format = "[$symbol($version)]($style)";
+      };
+
+      fill.symbol = " ";
     };
   };
 
   programs.tmux = {
     enable = true;
-
   };
 
   programs.atuin = {

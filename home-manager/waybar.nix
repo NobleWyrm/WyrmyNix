@@ -20,7 +20,7 @@
       "custom/logo" = {
         format = "";
         tooltip = false;
-        on-click = ''bemenu-run --accept-single  -n -p "Launch" --hp 4 --hf "#ffffff" --sf "#ffffff" --tf "#ffffff" '';
+        #on-click = ''bemenu-run --accept-single  -n -p "Launch" --hp 4 --hf "#ffffff" --sf "#ffffff" --tf "#ffffff" '';
       };
 
       "clock" = {
