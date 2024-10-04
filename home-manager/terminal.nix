@@ -6,8 +6,7 @@
 # ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 {
   config,
-  pkgs,
-  lib,
+  pkgs, pkgs-stable, lib,
   ...
 }: {
   programs.kitty = {
@@ -27,6 +26,7 @@
   programs.zsh = {
     enable = true;
     enableCompletion = true;
+    defaultKeymap = "emacs";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
   
@@ -45,6 +45,7 @@
   programs.starship = {
     enable = true;
     settings = {
+      add_newline = false;
 
     };
   };
@@ -53,10 +54,12 @@
     enable = true;
     enableZshIntegration = true;
     settings = {
-      style = "compact";
+      vim = true;
+      search_mode = "fuzzy";
+      filter_mode = "host";
     };
     flags = [
-      '--disable-up-arrow'
+      "--disable-up-arrow"
     ];
   };
 }
