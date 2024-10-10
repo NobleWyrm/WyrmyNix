@@ -10,7 +10,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # For fancy automated system-wide ricing
-    stylix.url = "github:danth/stylix";
+    #stylix.url = "github:danth/stylix";
+    # Pinning a specific commit to fix a build issue for now
+    stylix.url = "github:danth/stylix/ed91a20c84a80a525780dcb5ea3387dddf6cd2de";
     # Great repository full of config tweaks for different hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
