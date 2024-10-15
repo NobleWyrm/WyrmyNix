@@ -52,6 +52,8 @@
     pwvucontrol
     teamspeak_client
     wl-clipboard-rs
+    vlc
+    qpwgraph
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
