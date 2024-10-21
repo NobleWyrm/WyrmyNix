@@ -5,6 +5,7 @@
   ...
 }: {
   programs.hyprlock.enable = true;
+  programs.rofi.enable = true;
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
