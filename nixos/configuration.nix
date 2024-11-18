@@ -140,7 +140,7 @@
   users.users.bwyrm = {
     isNormalUser = true;
     description = "Brian Wyrm";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "plugdev"];
     # Choosing to leave the default as bash and use zsh for kitty
     # This way I don't have to worry about my TTYs breaking in weird ways.
     # Might change it back later though, we'll see. Could find a better way.
