@@ -71,6 +71,7 @@
         servers = {
           #nixd.enable = true;
           ts_ls.enable = true;
+          basedpyright.enable = true;
         };
       };
       lsp-format.enable = true;
