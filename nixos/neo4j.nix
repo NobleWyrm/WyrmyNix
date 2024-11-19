@@ -3,8 +3,7 @@
   config,
   lib,
   ...
-}:
-{
+}: {
   #options.modules.neo4j = {enable = mkEnableOption "neo4j";};
   services.neo4j = {
     enable = true;
