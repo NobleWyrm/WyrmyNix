@@ -65,6 +65,20 @@
       mouse = "";
     };
 
+    keymaps = [
+      # Big wordy lua call that toggles the display of diagnostics (error and warning messages)
+      {
+        action = "<cmd>lua if vim.diagnostic.is_enabled() then vim.diagnostic.disable() else vim.diagnostic.enable() end<CR>";
+        key = "<leader>d";
+        mode = [ "n" "v" "i" ];
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Toggle diagnostics";
+        };
+      }
+    ];
+
     plugins = {
       lsp = {
         enable = true;
