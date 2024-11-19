@@ -191,7 +191,7 @@
 
     brightnessctl
     # This is the section for hyprland, eventually gonna put this in its own config file
-    pkgs-stable.hyprland
+    hyprland
     hyprlock
     waybar
     dunst
