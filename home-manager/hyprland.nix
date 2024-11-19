@@ -39,8 +39,8 @@
         mouse_refocus = false;
 
         # Should fix the issue I'm seeing with the detached numpad of the Framework 16 getting out of sync
-	kb_options = numpad:mac;
-	numlock_by_default = true;
+        kb_options = numpad:mac;
+        numlock_by_default = true;
 
         touchpad = {
           natural_scroll = true;
@@ -58,9 +58,12 @@
 
       decoration = {
         rounding = 5;
-        drop_shadow = true;
-        shadow_range = 30;
-        shadow_render_power = 3;
+        # The shadow settings were moved to a subsection
+        shadow = {
+          enabled = true;
+          range = 30;
+          render_power = 3;
+        };
 
         blur = {
           enabled = true;
@@ -125,7 +128,7 @@
           ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
           ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
           ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
-	  ",XF86AudioPlay, exec, playerctl play-pause"
+          ",XF86AudioPlay, exec, playerctl play-pause"
           ",XF86MonBrightnessUp, exec, brightnessctl s 10%+"
           ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
         ]
