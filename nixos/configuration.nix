@@ -22,8 +22,7 @@
 
   nixpkgs.overlays = [
     (
-      self: super:
-      {
+      self: super: {
         kerbrute-go = super.callPackage ../packages/kerbrute-go {}; # path containing default.nix
       }
     )
@@ -72,9 +71,6 @@
     nerdfonts
   ];
 
-  # Enable Hyprland
-  programs.hyprland.enable = true;
-
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
   stylix.polarity = "dark";
@@ -90,7 +86,7 @@
   services.printing.enable = true;
 
   services.devmon.enable = true;
-  services.gvfs.enable = true; 
+  services.gvfs.enable = true;
   services.udisks2.enable = true;
 
   # Bad funky hack to make /etc/hosts writable, so that I can edit it (still as root) for Hack the Box and such.
@@ -148,7 +144,7 @@
   };
 
   environment.shellAliases = {
-    vim = "nvim";
+    #vim = "nvim";
   };
   environment.variables.EDITOR = "nvim";
   programs.zsh.enable = true;
@@ -189,15 +185,13 @@
     openvpn
     freerdp
 
-    # NixOS Specific Tools
-    alejandra
-
     # Terminals
     kitty
     yakuake
 
     brightnessctl
     # This is the section for hyprland, eventually gonna put this in its own config file
+    pkgs-stable.hyprland
     hyprlock
     waybar
     dunst

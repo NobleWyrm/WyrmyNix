@@ -6,7 +6,10 @@
 # ╚═╝  ╚═╝╚═╝   ╚═╝      ╚═╝      ╚═╝
 {
   config,
-  pkgs, pkgs-stable, lib,
+  pkgs,
+  pkgs-stable,
+  lib,
+  inputs,
   ...
 }: {
   programs.kitty = {
@@ -24,12 +27,66 @@
     };
   };
 
-  programs.neovim = {
+  # Load in the nixvim flake to get the home-manager modules available
+  imports = [inputs.nixvim.homeManagerModules.nixvim];
+  # Get the packages required for language servers and other plugins
+  home.packages = with pkgs; [
+    pkgs-stable.nixd
+    alejandra
+    vimPlugins.nvim-treesitter
+  ];
+  # Necessary addition for nixd
+  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  programs.nixvim = {
     enable = true;
 
-    plugins = with pkgs.vimPlugins; [
-      base16-nvim
-    ];
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    # Have to use "+y to yank to the clipboard register
+    # @TODO set up better keybinds to work with this.
+    clipboard.providers.wl-copy.enable = true;
+
+    opts = {
+      number = true;
+      cursorline = true;
+      tabstop = 2;
+      softtabstop = 2;
+      expandtab = true;
+      smartindent = true;
+      breakindent = true;
+      shiftwidth = 2;
+
+      # Offset the screen scrolling so 10 lines are always above/below the cursor
+      scrolloff = 10;
+
+      # Disable the dang mouse support so I stop accidentally clicking
+      mouse = "";
+    };
+
+    plugins = {
+      lsp = {
+        enable = true;
+        servers = {
+          #nixd.enable = true;
+          ts_ls.enable = true;
+        };
+      };
+      lsp-format.enable = true;
+      lsp-lines.enable = true;
+
+      treesitter = {
+        enable = true;
+
+        settings = {
+          indent.enable = true;
+          highlight.enable = true;
+        };
+
+        grammarPackages = pkgs.vimPlugins.nvim-treesitter.allGrammars;
+      };
+    };
   };
 
   # Added here just to tie into stylix
@@ -41,7 +98,7 @@
     defaultKeymap = "emacs";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
-  
+
     shellAliases = {
       ll = "ls -l";
       kali = "ssh kali";
@@ -51,7 +108,6 @@
       size = 10000;
       path = "${config.xdg.dataHome}/zsh/history";
     };
-  
   };
 
   programs.starship = {
@@ -61,23 +117,23 @@
 
       format = lib.concatStrings [
         "[](${base03})"
-	"[ ](fg:${base08} bg:${base03})"
-	"[ ](fg:${base03} bg:${base02})"
+        "[ ](fg:${base08} bg:${base03})"
+        "[ ](fg:${base03} bg:${base02})"
         "$directory"
-	"[ ](fg:${base02} bg:${base00})"
+        "[ ](fg:${base02} bg:${base00})"
         "$git_branch"
         "$git_status"
         "$rust"
-	"$fill"
-	"[](fg:${base03} bg:${base00})"
+        "$fill"
+        "[](fg:${base03} bg:${base00})"
         "$time"
-	"[](fg:${base03} bg:${base00})"
+        "[](fg:${base03} bg:${base00})"
         "\n"
         "$character"
       ];
 
       directory = {
-	format = "[$path]($style)";
+        format = "[$path]($style)";
         style = "fg:${base07} bg:${base02}";
         truncation_length = 5;
         truncation_symbol = "…/";
@@ -85,8 +141,8 @@
 
       time = {
         disabled = false;
-	format = "[$time]($style)";
-	time_format = "%R";
+        format = "[$time]($style)";
+        time_format = "%R";
         style = "fg:${base07} bg:${base03}";
       };
 
