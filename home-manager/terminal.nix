@@ -70,7 +70,7 @@
       {
         action = "<cmd>lua if vim.diagnostic.is_enabled() then vim.diagnostic.disable() else vim.diagnostic.enable() end<CR>";
         key = "<leader>d";
-        mode = [ "n" "v" "i" ];
+        mode = ["n" "v" "i"];
         options = {
           silent = true;
           noremap = true;
