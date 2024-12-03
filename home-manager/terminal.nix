@@ -172,6 +172,7 @@
 
   programs.tmux = {
     enable = true;
+    shell = "/etc/profiles/per-user/bwyrm/bin/zsh";
   };
 
   programs.atuin = {
