@@ -20,12 +20,6 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # An overlay for a Rust nix dev shell
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = inputs @ {
@@ -33,7 +27,6 @@
     nixpkgs,
     nixpkgs-stable,
     home-manager,
-    rust-overlay,
     nixvim,
     ...
   }: let
@@ -70,11 +63,6 @@
               inherit inputs;
             };
           }
-          # Overlay for the Rust nix dev shell
-          ({pkgs, ...}: {
-            nixpkgs.overlays = [rust-overlay.overlays.default];
-            environment.systemPackages = [pkgs.rust-bin.stable.latest.default];
-          })
         ];
       };
     };

@@ -68,7 +68,10 @@
 
   fonts.packages = with pkgs; [
     font-awesome
-    nerdfonts
+    # nerdfonts was split out into separate packages for each individual font
+    # This is kinda nice, but also means I have to go font by font.
+    #nerdfonts
+    nerd-fonts.jetbrains-mono
   ];
 
   stylix.enable = true;
