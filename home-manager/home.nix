@@ -18,6 +18,16 @@
     ./vscode.nix
   ];
 
+  xdg.desktopEntries = {
+    kaliRDP = {
+      name = "Kali RDP";
+      genericName = "Kali Connect";
+      exec = "xfreerdp /v:kali.wyrm /u:bwyrm /dynamic-resolution /cert:ignore /p: /d:";
+      terminal = false;
+      categories = [ "Application" ];
+    };
+  };
+
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.

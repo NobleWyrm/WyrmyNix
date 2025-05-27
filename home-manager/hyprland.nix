@@ -11,6 +11,7 @@
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
+      #"$terminal" = "foot";
       "$menu" = "rofi -show drun -show-icons";
       "$raw_run" = "rofi -show run";
 
@@ -26,6 +27,10 @@
 
       xwayland = {
         force_zero_scaling = true;
+      };
+
+      cursor = {
+        no_warps = true;
       };
 
       input = {
@@ -91,6 +96,7 @@
           #", Print, exec, flameshot full -c"
           ", Print, exec, grimblast copy screen"
           "$mod SHIFT, s, exec, grimblast copy area"
+          "$mod SHIFT CTRL, s, exec, grimblast save area"
 
           # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
           "$mod, Escape, killactive,"

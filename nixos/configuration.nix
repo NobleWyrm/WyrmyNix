@@ -2,11 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 {
-  config,
+# config,
   pkgs,
-  pkgs-stable,
-  lib,
-  inputs,
+# pkgs-stable,
+# lib,
+# inputs,
   ...
 }: {
   imports = [
@@ -15,7 +15,8 @@
     ./bootloader.nix
     ./displaymanager.nix
     # Required for hashcat and other GPU compute functionality on AMD hardware
-    ./rocm.nix
+    # Disabled for now since it appears to be causing build issues for some reason.
+    #./rocm.nix
 
     ./neo4j.nix
   ];
@@ -45,6 +46,9 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  #This apparently helps with WiFi stability.
+  hardware.enableRedistributableFirmware = true;
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -76,7 +80,13 @@
 
   stylix.enable = true;
   stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
-  stylix.polarity = "dark";
+  #stylix.override = {
+  #  base00 = 
+  #}
+  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/gigavolt.yaml";
+  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-frappe.yaml";
+  
+  #stylix.polarity = "dark";
   stylix.image = ./wallpaper.png;
 
   # Configure keymap in X11
@@ -177,6 +187,7 @@
     neovim
 
     tmux
+    zellij
     jdk
     git
     btop
@@ -190,7 +201,7 @@
 
     # Terminals
     kitty
-    yakuake
+    foot
 
     brightnessctl
     # This is the section for hyprland, eventually gonna put this in its own config file
@@ -203,10 +214,15 @@
     rofi-wayland
     grimblast
     #(flameshot.override { enableWlrSupport = true; })
+    kdePackages.xwaylandvideobridge
   ];
 
   xdg.portal.enable = true;
-  xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
+  xdg.portal.extraPortals = [
+    pkgs.xdg-desktop-portal-gtk
+    pkgs.xdg-desktop-portal-hyprland
+    pkgs.xdg-desktop-portal-wlr
+  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -226,6 +242,15 @@
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   networking.firewall.enable = false;
+
+  # This should automatically handle running the home VPN
+  services.openvpn.servers = {
+    homeVPN = {
+      autoStart = true;
+      config = '' config /home/bwyrm/VPNs/pfSense-sec-UDP4-11194-majikguy-config.ovpn '';
+      updateResolvConf = true; # maybe this line could fix it
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

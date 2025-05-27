@@ -19,14 +19,23 @@
       # No kitty, I don't care if there is an inactive bash session, just kill the pane!
       confirm_os_window_close = 0;
       shell = "zsh";
-      background_opacity = lib.mkForce "0.80";
+      background_opacity = lib.mkForce "0.95";
       window_padding_width = 10;
       scrollback_lines = 10000;
       enable_audio_bell = false;
       mouse_hide_wait = 5;
     };
   };
-
+  programs.foot = {
+    enable = true;
+    settings = {
+      main = {
+        shell = "zsh";
+        pad = "5x5";
+      };
+      colors.alpha = lib.mkForce 0.9;
+    };
+  };
   # Load in the nixvim flake to get the home-manager modules available
   imports = [inputs.nixvim.homeManagerModules.nixvim];
   # Get the packages required for language servers and other plugins
@@ -77,19 +86,46 @@
           desc = "Toggle diagnostics";
         };
       }
+      {
+        action = "<cmd>RustLsp codeAction<CR>";
+        key = "<leader>a";
+        mode = ["n" "v" "i"];
+        options = {
+          silent = true;
+          noremap = true;
+          desc = "Rust CodeAction";
+        };
+      }
     ];
 
     plugins = {
       lsp = {
         enable = true;
+        #inlayHints = true;
         servers = {
-          #nixd.enable = true;
+          nixd = {
+            enable = true;
+            # Getting the autocompletion to work properly is a black magic I have to read more into.
+            extraOptions = {
+              nixos = {
+                expr = "(builtins.getFlake 'github:bwyrm/WyrmyNix').nixosConfigurations.WyrmNix.options";
+              };
+              home_manager = {
+                expr = "(builtins.getFlake 'github:bwyrm/WyrmyNix').homeConfigurations.WyrmNix.options";
+              };
+            };
+          };
+
           ts_ls.enable = true;
           basedpyright.enable = true;
         };
       };
       lsp-format.enable = true;
       lsp-lines.enable = true;
+
+      # For now, just using this all-in-one solution for Rust integration.
+      # This sets up lsp for Rust, seems to lightly conflict with the manually added one above?
+      rustaceanvim.enable = true;
 
       treesitter = {
         enable = true;
@@ -117,6 +153,8 @@
     shellAliases = {
       ll = "ls -l";
       kali = "ssh kali";
+      icat = "kitten icat";
+      s = "kitten ssh";
       #update = "sudo nixos-rebuild switch";
     };
     history = {
@@ -173,6 +211,13 @@
   programs.tmux = {
     enable = true;
     shell = "/etc/profiles/per-user/bwyrm/bin/zsh";
+  };
+
+  programs.zellij = {
+    enable = true;
+    settings = {
+      default_shell = "zsh";
+    };
   };
 
   programs.atuin = {

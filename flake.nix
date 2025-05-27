@@ -37,7 +37,7 @@
     };
   in {
     nixosConfigurations = {
-      WyrmNix = nixpkgs.lib.nixosSystem rec {
+      WyrmNix = nixpkgs.lib.nixosSystem  {
         specialArgs = {inherit pkgs-stable;};
 
         modules = [
