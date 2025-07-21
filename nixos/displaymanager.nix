@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   # Enable Display Manager
   services.greetd = {
     enable = true;
@@ -10,7 +10,8 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    greetd.tuigreet
+  environment.systemPackages = [
+    pkgs.greetd.tuigreet
+    #inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default
   ];
 }

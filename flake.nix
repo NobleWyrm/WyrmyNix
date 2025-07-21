@@ -5,20 +5,31 @@
     # Cool people use unstable, it'll never fail me!
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # Fallback for when unstable fails me.
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.11";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+
+    # Add home-manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # For fancy automated system-wide ricing
     stylix.url = "github:danth/stylix";
-    # Pinning a specific commit to fix a build issue for now
-    #stylix.url = "github:danth/stylix/ed91a20c84a80a525780dcb5ea3387dddf6cd2de";
+
     # Great repository full of config tweaks for different hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     # Nix-based NeoVim distribution
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # Hyprland added directly
+    hyprland.url = "github:hyprwm/hyprland";
+
+    # Fancy cursor theme I like
+    rose-pine-hyprcursor = {
+      url = "github:ndom91/rose-pine-hyprcursor";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.hyprlang.follows = "hyprland/hyprlang";
     };
   };
 
