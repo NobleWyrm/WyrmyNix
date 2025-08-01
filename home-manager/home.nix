@@ -18,6 +18,10 @@
     ./vscode.nix
   ];
 
+  home.sessionPath = [
+    "/home/bwyrm/.local/bin"
+  ];
+
   xdg.desktopEntries = {
     kaliRDP = {
       name = "Kali RDP";

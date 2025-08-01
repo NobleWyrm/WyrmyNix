@@ -143,6 +143,21 @@
   # Added here just to tie into stylix
   programs.btop.enable = true;
 
+  programs.bat = {
+    enable = true;
+    config = {
+      pager = "less -FR";
+      #theme = "Dracula";
+    };
+    extraPackages = with pkgs.bat-extras; [
+      batman
+      batpipe
+      batgrep
+      batdiff
+      batwatch
+    ];
+  };
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;

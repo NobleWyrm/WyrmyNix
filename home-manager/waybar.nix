@@ -15,7 +15,8 @@
       ];
 
       modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/mode"];
-      modules-right = ["privacy" "wireplumber" "network" "tray" "clock" "battery"];
+      modules-center = [ "clock" ];
+      modules-right = ["privacy" "wireplumber" "network" "tray" "cpu" "battery"];
 
       "custom/logo" = {
         format = "";
@@ -26,14 +27,15 @@
       "clock" = {
         interval = 60;
         format = "{:%a %m/%d | %I:%M}";
-        tooltip = false;
+        tooltip = true;
         #tooltip-format = "{:%A, %B %d, %Y (%R)}  ";
+        tooltip-format = "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>";
       };
 
       "wireplumber" = {
-        format = "{volume}%";
-        format-muted = "";
-        #on-click = "helvum";
+        format = "{volume}%  ";
+        format-muted = "󰖁 ";
+
         on-click = "pwvucontrol";
         max-volume = 100;
         scroll-step = 0.2;
@@ -45,7 +47,8 @@
           warning = 30;
           critical = 15;
         };
-        format = "{capacity}% {icon}";
+        format = "{capacity}% {icon} ";
+        format-charging = "{capacity}% {icon}󱐋";
         format-icons = ["" "" "" "" ""];
         max-length = 25;
       };
@@ -66,6 +69,10 @@
       "tray" = {
         icon-size = 16;
         spacing = 10;
+      };
+
+      "cpu" = {
+        format = "{usage}% ";
       };
 
       "privacy" = {

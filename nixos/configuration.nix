@@ -15,10 +15,11 @@
     ./bootloader.nix
     ./displaymanager.nix
     # Required for hashcat and other GPU compute functionality on AMD hardware
-    # Disabled for now since it appears to be causing build issues for some reason.
-    #./rocm.nix
+    ./rocm.nix
 
-    ./neo4j.nix
+    ./pipewire.nix
+
+    #./neo4j.nix
   ];
 
   nixpkgs.overlays = [
@@ -102,6 +103,9 @@
   services.gvfs.enable = true;
   services.udisks2.enable = true;
 
+  # Turn on docker! I'm sure I won't get annoyed by this in the future.
+  virtualisation.docker.enable = true;
+
   # Bad funky hack to make /etc/hosts writable, so that I can edit it (still as root) for Hack the Box and such.
   # I bet there's a way to spin up temporary shell environments with additonal hosts added in an overlay or something
   # Not gonna waste time on that now, gotta practice the hackin'
@@ -127,20 +131,10 @@
     })
   '';
 
-  # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
-
-    # use the example session manager (no others are packaged yet so this is enabled by default,
-    # no need to redefine it in your config for now)
-    #media-session.enable = true;
-  };
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  # Is this worth doing? Dunno, let's find out.
+  #powerManagement.enable = true;
+  services.power-profiles-daemon.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -195,13 +189,14 @@
     powertop
     neofetch
     python3
+    pipx
 
     openvpn
     freerdp
 
     # Terminals
     kitty
-    foot
+    #foot
 
     brightnessctl
     # This is the section for hyprland, eventually gonna put this in its own config file
@@ -215,6 +210,7 @@
     grimblast
     #(flameshot.override { enableWlrSupport = true; })
     kdePackages.xwaylandvideobridge
+    xorg.xhost
   ];
 
   xdg.portal.enable = true;
@@ -235,13 +231,13 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = false;
+  networking.firewall.enable = true;
 
   # This should automatically handle running the home VPN
   services.openvpn.servers = {
