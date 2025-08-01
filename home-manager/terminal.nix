@@ -24,6 +24,7 @@
       scrollback_lines = 10000;
       enable_audio_bell = false;
       mouse_hide_wait = 5;
+      paste_actions = "no-op";
     };
   };
   programs.foot = {
@@ -147,7 +148,6 @@
     enable = true;
     config = {
       pager = "less -FR";
-      #theme = "Dracula";
     };
     extraPackages = with pkgs.bat-extras; [
       batman
