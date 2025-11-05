@@ -64,7 +64,7 @@
     obsidian
     # Pipewire version of pavucontrol, handy to have.
     pwvucontrol
-    teamspeak_client
+    #teamspeak_client
     wl-clipboard-rs
     vlc
     qpwgraph

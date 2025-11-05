@@ -13,12 +13,20 @@
   stylix.cursor.size = 1;
   stylix.cursor.name = "BreezX-RosePine-Linux";
 
+  services.hypridle.enable = true;
+  services.hypridle.settings = {
+    general = {
+      lock_cmd = "pidof hyprlock || hyprlock";
+      before_sleep_cmd = "loginctl lock-session";
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
       "$mod" = "SUPER";
       "$terminal" = "kitty";
-      #"$terminal" = "foot";
+      "$lockscreen" = "loginctl lock-session";
       "$menu" = "rofi -show drun -show-icons";
       "$raw_run" = "rofi -show run";
 
@@ -114,6 +122,7 @@
           "$mod, F, fullscreen"
           "$mod, P, pseudo, # dwindle"
           "$mod, J, togglesplit, # dwindle"
+          "$mod CTRL, L, exec, $lockscreen"
 
           #", Print, exec, grimblast copy area"
           # Move focus with mainMod + arrow keys

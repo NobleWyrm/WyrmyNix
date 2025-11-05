@@ -14,6 +14,9 @@
 }: {
   programs.kitty = {
     enable = true;
+    themeFile = "tokyo_night_night";
+    font.size = lib.mkForce 9;
+
     settings = {
       # Gets rid of the annoying confirmation on close.
       # No kitty, I don't care if there is an inactive bash session, just kill the pane!

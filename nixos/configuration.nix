@@ -131,6 +131,8 @@
     })
   '';
 
+  security.pam.services.hyprlock = {};
+
   services.logind.lidSwitch = "suspend-then-hibernate";
   # Is this worth doing? Dunno, let's find out.
   #powerManagement.enable = true;
@@ -202,11 +204,12 @@
     # This is the section for hyprland, eventually gonna put this in its own config file
     hyprland
     hyprlock
+    hypridle
     waybar
     dunst
     libnotify
     swww
-    rofi-wayland
+    rofi
     grimblast
     #(flameshot.override { enableWlrSupport = true; })
     kdePackages.xwaylandvideobridge
