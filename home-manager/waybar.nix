@@ -15,7 +15,7 @@
       ];
 
       modules-left = ["custom/logo" "hyprland/workspaces" "hyprland/mode"];
-      modules-center = [ "clock" ];
+      modules-center = ["clock"];
       modules-right = ["privacy" "wireplumber" "network" "tray" "cpu" "battery"];
 
       "custom/logo" = {

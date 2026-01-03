@@ -8,7 +8,7 @@
   programs.hyprlock.enable = true;
   programs.rofi.enable = true;
 
-  stylix.cursor.package = inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default;
+  stylix.cursor.package = inputs.rose-pine-hyprcursor.packages.${pkgs.stdenv.hostPlatform.system}.default;
 
   stylix.cursor.size = 1;
   stylix.cursor.name = "BreezX-RosePine-Linux";

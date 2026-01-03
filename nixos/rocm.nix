@@ -1,4 +1,8 @@
-{pkgs,pkgs-stable, ...}: {
+{
+  pkgs,
+  pkgs-stable,
+  ...
+}: {
   # Taken from https://theholytachanka.com/posts/setting-up-resolve/
   # Enable openGL and install Rocm
   hardware.graphics = {

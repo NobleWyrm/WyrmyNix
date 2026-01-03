@@ -48,11 +48,12 @@
     };
   in {
     nixosConfigurations = {
-      WyrmNix = nixpkgs.lib.nixosSystem  {
+      WyrmNix = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit pkgs-stable;};
 
         modules = [
           ./nixos/configuration.nix
+          ./hosts/Framewyrm/default.nix
           # Loads the Stylix modules for both NixOS and home-manager
           inputs.stylix.nixosModules.stylix
           # Load up the Framework 16 specific configuration from nixos-hardware
@@ -74,6 +75,13 @@
               inherit inputs;
             };
           }
+        ];
+      };
+      Incus = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit pkgs-stable;};
+        modules = [
+          ./nixos/configuration.nix
+          inputs.stylix.nixosModules.stylix
         ];
       };
     };

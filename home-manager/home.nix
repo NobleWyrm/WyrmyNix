@@ -28,7 +28,7 @@
       genericName = "Kali Connect";
       exec = "xfreerdp /v:kali.wyrm /u:bwyrm /dynamic-resolution /cert:ignore /p: /d:";
       terminal = false;
-      categories = [ "Application" ];
+      categories = ["Application"];
     };
   };
 
@@ -68,6 +68,9 @@
     wl-clipboard-rs
     vlc
     qpwgraph
+    pkgs-stable.crawl
+    # Neat SQL TUI
+    rainfrog
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
