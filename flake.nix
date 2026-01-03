@@ -48,11 +48,12 @@
     };
   in {
     nixosConfigurations = {
-      WyrmNix = nixpkgs.lib.nixosSystem {
+
+      Framewyrm = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit pkgs-stable;};
 
         modules = [
-          ./nixos/configuration.nix
+          ./nixos/core.nix
           ./hosts/Framewyrm/default.nix
           # Loads the Stylix modules for both NixOS and home-manager
           inputs.stylix.nixosModules.stylix
@@ -77,11 +78,12 @@
           }
         ];
       };
+
       Incus = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit pkgs-stable;};
         modules = [
-          ./nixos/configuration.nix
-          inputs.stylix.nixosModules.stylix
+          ./nixos/core.nix
+          ./hosts/Menelon/default.nix
         ];
       };
     };
